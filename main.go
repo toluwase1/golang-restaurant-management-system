@@ -1,6 +1,7 @@
 package main
 
 import (
+	"golang-restaurant-management-system/routes"
 	"os"
 
 	"github.com/gin-gonic/gin"
