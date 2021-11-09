@@ -3,6 +3,7 @@ package controller
 import (
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang-restaurant-management-system/database"
 	"golang-restaurant-management-system/models"
 	"net/http"
@@ -63,6 +64,7 @@ func CreateFood() gin.HandlerFunc {
 		}
 		food.Created_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 		food.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		food.ID =primitive.NewObjectID()
 		food.Food_id = food.ID.Hex()
 		var num = toFixed(*food.Price, 2)
 		food.Price = &num
